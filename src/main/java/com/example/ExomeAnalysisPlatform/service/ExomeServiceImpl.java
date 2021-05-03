@@ -3,6 +3,8 @@ package com.example.ExomeAnalysisPlatform.service;
 import com.example.ExomeAnalysisPlatform.dto.response.ExomeResponseDto;
 import com.example.ExomeAnalysisPlatform.dto.response.PageResponseDto;
 import com.example.ExomeAnalysisPlatform.entity.ExomeEntity;
+import com.example.ExomeAnalysisPlatform.helper.file.converter.FileConverter;
+import com.example.ExomeAnalysisPlatform.helper.file.utils.FileUtils;
 import com.example.ExomeAnalysisPlatform.helper.mapper.ExomeDtoMapper;
 import com.example.ExomeAnalysisPlatform.repository.ExomeRepository;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static com.example.ExomeAnalysisPlatform.config.Config.savePath;
+import static com.example.ExomeAnalysisPlatform.config.Config.savePathAnalysis;
 
 @Service
 @AllArgsConstructor
@@ -27,17 +30,18 @@ public class ExomeServiceImpl implements ExomeService {
 
     @Override
     public ExomeResponseDto saveExome(MultipartFile exomeFile) throws IOException {
+        String filePath = FileUtils.getUniqueFileName(savePath + exomeFile.getOriginalFilename());
+        saveFile(filePath, exomeFile);
 
-        String filePath = savePath + exomeFile.getOriginalFilename();
-        exomeFile.transferTo(new File(filePath));
-
-        ExomeEntity exomeEntity = new ExomeEntity(
-                null,
-                exomeFile.getOriginalFilename(),
-                filePath
-        );
+        ExomeEntity exomeEntity = new ExomeEntity(null, exomeFile.getOriginalFilename(), filePath);
         exomeRepository.save(exomeEntity);
         return exomeMapper.toDto(exomeEntity);
+    }
+
+    public void saveFile(String filePath, MultipartFile exomeFile) throws IOException {
+        exomeFile.transferTo(new File(filePath));
+        String savedFileName = FileUtils.getFileName(filePath);
+        FileConverter.saveFileCSVCopy(savedFileName);
     }
 
     @Override
@@ -71,6 +75,9 @@ public class ExomeServiceImpl implements ExomeService {
 
     @Override
     public void deleteExome(long id) {
+        ExomeEntity exomeEntity = exomeRepository.getOne(id);
+        FileUtils.deleteFile(exomeEntity.getPath());
+        FileUtils.deleteFile(savePathAnalysis + FileUtils.getFileName(exomeEntity.getPath()) + ".csv");
         exomeRepository.deleteById(id);
     }
 }

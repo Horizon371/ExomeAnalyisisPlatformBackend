@@ -4,14 +4,12 @@ import com.example.ExomeAnalysisPlatform.dto.request.ExomeRequestDto;
 import com.example.ExomeAnalysisPlatform.dto.request.PageRequestDto;
 import com.example.ExomeAnalysisPlatform.dto.response.ExomeResponseDto;
 import com.example.ExomeAnalysisPlatform.dto.response.PageResponseDto;
+import com.example.ExomeAnalysisPlatform.service.ExomeAnalysisService;
 import com.example.ExomeAnalysisPlatform.service.ExomeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +23,7 @@ import java.nio.file.Files;
 public class ExomeController {
 
     ExomeService exomeService;
-    
+
     @PostMapping("/add")
     public ResponseEntity<ExomeResponseDto> addExome(@RequestBody MultipartFile exomeFile) throws IOException {
         ExomeResponseDto savedExomeResponseDto = exomeService.saveExome(exomeFile);
@@ -60,4 +58,5 @@ public class ExomeController {
         exomeService.deleteExome(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
+
 }

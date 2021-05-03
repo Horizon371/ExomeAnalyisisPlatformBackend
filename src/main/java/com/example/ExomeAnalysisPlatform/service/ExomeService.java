@@ -2,7 +2,6 @@ package com.example.ExomeAnalysisPlatform.service;
 
 import com.example.ExomeAnalysisPlatform.dto.response.ExomeResponseDto;
 import com.example.ExomeAnalysisPlatform.dto.response.PageResponseDto;
-import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
