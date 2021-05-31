@@ -1,6 +1,7 @@
 package com.example.ExomeAnalysisPlatform.controller;
 
-import com.example.ExomeAnalysisPlatform.entity.GeneEntry;
+import com.example.ExomeAnalysisPlatform.dto.response.IncidentialDiscoveriesData;
+import com.example.ExomeAnalysisPlatform.entity.GeneFrequencyEntry;
 import com.example.ExomeAnalysisPlatform.service.ExomeAnalysisService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,8 +27,14 @@ public class ExomeAnalysisController {
     }
 
     @PostMapping("/incidential")
-    public ResponseEntity<List<GeneEntry>> incidentialDiscoveries(@RequestBody long id){
-        List<GeneEntry> geneEntries = exomeAnalysisService.getIncidentialDiscoveries(id);
-        return new ResponseEntity<>(geneEntries, HttpStatus.OK);
+    public ResponseEntity<IncidentialDiscoveriesData> incidentialDiscoveries(@RequestBody long id){
+        IncidentialDiscoveriesData incidentialDiscoveries = exomeAnalysisService.getIncidentialDiscoveries(id);
+        return new ResponseEntity<>(incidentialDiscoveries, HttpStatus.OK);
+    }
+
+    @PostMapping("/frequency")
+    public ResponseEntity<List<GeneFrequencyEntry>> geneFrequenciesForGeneVariations(@RequestBody String geneName){
+        List<GeneFrequencyEntry> frequencies = exomeAnalysisService.getGeneVariationFrequencies(geneName);
+        return new ResponseEntity<>(frequencies, HttpStatus.OK);
     }
 }

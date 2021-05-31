@@ -7,5 +7,6 @@ public class Config {
     public static final String pythonScriptSaveXlsAsCSV = "SaveCSVVersionOfFile.py";
     public static final String pythonScriptCosangunity = "CosanguinityPipeline.py";
     public static final String pythonScriptIncidentialDiscoveries = "IncidentialDiscoveriesPipeline.py";
+    public static final String pythonScriptGeneFrequency = "GeneFrequencyPipeline.py";
 
 }
