@@ -5,6 +5,7 @@ import com.example.ExomeAnalysisPlatform.entity.ExomeEntity;
 import com.example.ExomeAnalysisPlatform.entity.GeneEntry;
 import com.example.ExomeAnalysisPlatform.entity.GeneFrequencyEntry;
 import com.example.ExomeAnalysisPlatform.helper.file.utils.FileUtils;
+import com.example.ExomeAnalysisPlatform.helper.scripts.Clustering;
 import com.example.ExomeAnalysisPlatform.helper.scripts.Cosangunity;
 import com.example.ExomeAnalysisPlatform.helper.scripts.GeneFrequency;
 import com.example.ExomeAnalysisPlatform.helper.scripts.IncidentialDiscoveries;
@@ -21,6 +22,11 @@ import java.util.List;
 public class ExomeAnalysisServiceImpl implements ExomeAnalysisService{
 
     private final ExomeRepository exomeRepository;
+
+    @Override
+    public void cluster(){
+        Clustering.cluster();
+    }
 
     @Override
     public String getCosanguinity(long id) {

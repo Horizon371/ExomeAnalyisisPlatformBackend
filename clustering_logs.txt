@@ -1,0 +1,12 @@
+0 : ['ex10' 'ex11' 'Ex20' 'Ex21' 'Ex22' 'Ex23' 'Ex24' 'Ex25' 'Ex26' 'Ex27'
+ 'Ex30' 'Ex35' 'ex6' 'EX62' 'EX69' 'ex7' 'ex8' 'ex9']
+1 : ['Ex28' 'Ex31' 'Ex32' 'Ex33' 'Ex34' 'Ex36' 'Ex37' 'Ex38' 'Ex39' 'Ex40'
+ 'Ex41' 'Ex42' 'Ex43' 'Ex44' 'Ex45' 'Ex46' 'Ex47'
+ 'EX60_GATK_snp_annovar_hg38_multianno' 'EX61' 'EX611' 'EX63' 'EX64'
+ 'EX65' 'EX66' 'EX67' 'EX68' 'EX70' 'EXOM1']
+0 : ['Ex28' 'Ex31' 'Ex32' 'Ex33' 'Ex34' 'Ex36' 'Ex37' 'Ex38' 'Ex39' 'Ex40'
+ 'Ex41' 'Ex42' 'Ex43' 'Ex44' 'Ex45' 'Ex46' 'Ex47'
+ 'EX60_GATK_snp_annovar_hg38_multianno' 'EX61' 'EX611' 'EX63' 'EX64'
+ 'EX65' 'EX66' 'EX67' 'EX68' 'EX70' 'EXOM1']
+1 : ['ex10' 'ex11' 'Ex20' 'Ex21' 'Ex22' 'Ex23' 'Ex24' 'Ex25' 'Ex26' 'Ex27'
+ 'Ex30' 'Ex35' 'ex6' 'EX62' 'EX69' 'ex7' 'ex8' 'ex9']

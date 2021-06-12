@@ -11,4 +11,6 @@ public interface ExomeAnalysisService {
     IncidentialDiscoveriesData getIncidentialDiscoveries(long id);
 
     List<GeneFrequencyEntry> getGeneVariationFrequencies(String geneName);
+
+    void cluster();
 }

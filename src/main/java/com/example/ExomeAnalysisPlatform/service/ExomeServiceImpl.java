@@ -6,6 +6,7 @@ import com.example.ExomeAnalysisPlatform.entity.ExomeEntity;
 import com.example.ExomeAnalysisPlatform.helper.file.converter.FileConverter;
 import com.example.ExomeAnalysisPlatform.helper.file.utils.FileUtils;
 import com.example.ExomeAnalysisPlatform.helper.mapper.ExomeDtoMapper;
+import com.example.ExomeAnalysisPlatform.helper.scripts.Clustering;
 import com.example.ExomeAnalysisPlatform.repository.ExomeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,7 +33,6 @@ public class ExomeServiceImpl implements ExomeService {
     public ExomeResponseDto saveExome(MultipartFile exomeFile) throws IOException {
         String filePath = FileUtils.getUniqueFileName(savePath + exomeFile.getOriginalFilename());
         saveFile(filePath, exomeFile);
-
         ExomeEntity exomeEntity = new ExomeEntity(null, exomeFile.getOriginalFilename(), filePath);
         exomeRepository.save(exomeEntity);
         return exomeMapper.toDto(exomeEntity);

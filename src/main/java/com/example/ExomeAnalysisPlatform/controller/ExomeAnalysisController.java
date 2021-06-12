@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 @RestController
@@ -36,5 +40,18 @@ public class ExomeAnalysisController {
     public ResponseEntity<List<GeneFrequencyEntry>> geneFrequenciesForGeneVariations(@RequestBody String geneName){
         List<GeneFrequencyEntry> frequencies = exomeAnalysisService.getGeneVariationFrequencies(geneName);
         return new ResponseEntity<>(frequencies, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/clusteringImg")
+    public void image(@RequestBody String something, HttpServletResponse response) throws IOException {
+        File file = new File("D:\\Projects\\Licenta\\Exome Analysis Project\\saved clustering plots\\clusters1.png");
+        response.setHeader("Content-Disposition", "filename=" + "clusters1.png");
+        response.getOutputStream().write(Files.readAllBytes(file.toPath()));
+    }
+
+    @PostMapping("/cluster")
+    public ResponseEntity<String> cluster(@RequestBody String something){
+        exomeAnalysisService.cluster();
+        return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 }

@@ -8,5 +8,6 @@ public class Config {
     public static final String pythonScriptCosangunity = "CosanguinityPipeline.py";
     public static final String pythonScriptIncidentialDiscoveries = "IncidentialDiscoveriesPipeline.py";
     public static final String pythonScriptGeneFrequency = "GeneFrequencyPipeline.py";
+    public static final String pythonScriptClustering = "Clustering.py";
 
 }
